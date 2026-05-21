@@ -1,0 +1,23 @@
+{
+  "name": "playwright-ts-e2e-framework-",
+  "version": "1.0.0",
+  "description": "E2E testing project using Playwright with Typescript",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rralex95/playwright-ts-e2e-framework-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Rralex95/playwright-ts-e2e-framework-/issues"
+  },
+  "homepage": "https://github.com/Rralex95/playwright-ts-e2e-framework-#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.1"
+  }
+}
