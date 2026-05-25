@@ -1,24 +1,28 @@
-export const PRACTICE_USERS = {
+import { ENV } from "../config/env"
 
+export const PRACTICE_USERS = {
     admin: {
-        username: "rahulshettyacademy",
-        password: "Learning@830$3mK2",
+        username: ENV.adminUsername,
+        password: ENV.adminPassword,
         type: "Admin"
     },
-
     user: {
-        username: "rahulshettyacademy",
-        password: "Learning@830$3mK2",
+        username: ENV.adminUsername,
+        password: ENV.adminPassword,
         type: "User"
     }
 }
 
 export const CLIENT_USERS = {
-
     validUser: {
         email: "test@test.com",
         password: "Password123"
     }
+}
+
+export const INVALID_USER = {
+    username: "wronguser",
+    password: "wrongpassword"
 }
 
 export const ROLES = [

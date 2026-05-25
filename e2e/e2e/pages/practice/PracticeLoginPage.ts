@@ -8,12 +8,13 @@ export class PracticeLoginPage {
     readonly userNameTextbox: Locator
     readonly passwordTextbox: Locator
     readonly loginButton: Locator
-    private readonly typeUser: Locator
-    private readonly btnOkay: Locator
+    readonly typeUser: Locator
+    readonly btnOkay: Locator
     readonly dropDown: Locator
     readonly termsCheckbox: Locator
     private readonly documentLink: Locator
     private readonly errorMessage: Locator
+    private readonly btnCancel: Locator
 
     constructor(page: Page) {
         this.page = page
@@ -27,6 +28,7 @@ export class PracticeLoginPage {
         this.termsCheckbox = page.locator('input[type="checkbox"]')
         this.documentLink = page.locator('a[href*="documents-request"]')
         this.errorMessage = page.locator(".alert-danger")
+        this.btnCancel = page.locator("#cancelBtn")
     }
 
     async goto() {
@@ -69,6 +71,12 @@ export class PracticeLoginPage {
     async getErrorMessage() {
         await this.errorMessage.waitFor({ state: 'visible' })
         return this.errorMessage.innerText()
+    }
+
+    async cancelModal() {
+        await this.btnCancel.waitFor({ state: 'visible' })
+        await this.btnCancel.click()
+        await this.btnCancel.waitFor({ state: 'hidden' })
     }
 
 }

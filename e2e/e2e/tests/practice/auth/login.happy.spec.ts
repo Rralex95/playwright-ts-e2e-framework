@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test"
-import { PracticeLoginPage } from "../../pages/practice/PracticeLoginPage";
-import { PRACTICE_USERS, ROLES } from "../../data/users"
-import { URLS } from "../../data/urls"
+import { PracticeLoginPage } from "../../../pages/practice/PracticeLoginPage"
+import { PRACTICE_USERS, ROLES } from "../../../data/users"
+import { URLS } from "../../../data/urls"
 
 test.describe("Login Happy Paths", () => {
 
@@ -9,6 +9,7 @@ test.describe("Login Happy Paths", () => {
 
     test.beforeEach(async ({ page }) => {
         loginPage = new PracticeLoginPage(page)
+
         await loginPage.goto()
     })
 
@@ -37,7 +38,7 @@ test.describe("Login Happy Paths", () => {
         await loginPage.confirmModal()
         await loginPage.fillUserDetails(ROLES[0])
         await loginPage.loginButton.click()
-        await page.waitForURL(URLS.shopPage)
+
         await expect(page).toHaveURL(URLS.shopPage)
     })
 

@@ -1,4 +1,6 @@
+import { ENV } from "../config/env"
+
 export const URLS = {
-    loginPage: "https://rahulshettyacademy.com/loginpagePractise/",
-    shopPage: "https://rahulshettyacademy.com/angularpractice/shop"
+    loginPage: `${ENV.baseUrl}/loginpagePractise/`,
+    shopPage: `${ENV.baseUrl}/angularpractice/shop`
 }
