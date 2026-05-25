@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test"
 import { PracticeLoginPage } from "../../../pages/practice/PracticeLoginPage"
-import { ROLES } from "../../../data/users"
+import { ROLES } from "../../../../../data/users"
 
 test.describe("Dropdown", () => {
 

@@ -1,5 +1,5 @@
 import { Page, Locator, expect } from "@playwright/test"
-import { URLS } from "../../data/urls"
+import { URLS } from "../../../../data/urls"
 
 export class PracticeLoginPage {
 

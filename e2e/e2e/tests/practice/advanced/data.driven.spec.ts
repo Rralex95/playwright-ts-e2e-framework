@@ -1,7 +1,7 @@
 import { test, expect } from "@playwright/test"
 import { PracticeLoginPage } from "../../../pages/practice/PracticeLoginPage"
-import { ERROR_MESSAGES } from "../../../data/messages"
-import { getLoginTestData } from "../../../data/testData"
+import { ERROR_MESSAGES } from "../../../../../data/messages"
+import { getLoginTestData } from "../../../../../data/testData"
 
 test.describe("Data Driven Login", () => {
 

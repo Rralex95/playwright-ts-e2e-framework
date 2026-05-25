@@ -1,8 +1,8 @@
 import { test, expect } from "@playwright/test"
 import { PracticeLoginPage } from "../../../pages/practice/PracticeLoginPage"
-import { PRACTICE_USERS, INVALID_USER } from "../../../data/users"
-import { ERROR_MESSAGES } from "../../../data/messages"
-import { URLS } from "../../../data/urls"
+import { PRACTICE_USERS, INVALID_USER } from "../../../../../data/users"
+import { ERROR_MESSAGES } from "../../../../../data/messages"
+import { URLS } from "../../../../../data/urls"
 
 test.describe("Login Validations", () => {
 
