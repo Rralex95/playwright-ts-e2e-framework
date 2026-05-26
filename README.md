@@ -25,13 +25,12 @@ playwright-ts-e2e-framework/
 ├── data/
 │   ├── messages.ts               # Error and validation messages
 │   ├── testData.ts               # Data-driven test datasets
-│   ├── urls.ts                   # Application URLs
 │   └── users.ts                  # User credentials and roles
 ├── e2e/
 │   └── e2e/
 │       ├── pages/
 │       │   └── practice/
-│       │       └── PracticeLoginPage.ts   # Page Object Model
+│       │       └── LoginPage.ts           # Page Object Model
 │       └── tests/
 │           └── practice/
 │               ├── auth/
@@ -52,15 +51,15 @@ playwright-ts-e2e-framework/
 
 ## Test Coverage
 
-| File                       | Tests  | Description                              |
-| -------------------------- | ------ | ---------------------------------------- |
-| `login.happy.spec.ts`      | 3      | Admin and user login flows               |
-| `login.validation.spec.ts` | 7      | Empty fields, invalid credentials, terms |
-| `radio.modal.spec.ts`      | 3      | Modal display, cancel, and confirmation  |
-| `dropdown.spec.ts`         | 3      | Role selection (parametrized)            |
-| `ux.behavior.spec.ts`      | 2      | Password masking, dropdown options       |
-| `data.driven.spec.ts`      | 4      | Login flows with multiple datasets       |
-| **Total**                  | **22** | **66 across 3 browsers**                 |
+| File | Tests | Description |
+|---|---|---|
+| `login.happy.spec.ts` | 3 | Admin and user login flows |
+| `login.validation.spec.ts` | 7 | Empty fields, invalid credentials, terms |
+| `radio.modal.spec.ts` | 3 | Modal display, cancel, and confirmation |
+| `dropdown.spec.ts` | 3 | Role selection (parametrized) |
+| `ux.behavior.spec.ts` | 2 | Password masking, dropdown options |
+| `data.driven.spec.ts` | 4 | Login flows with multiple datasets |
+| **Total** | **22** | **66 across 3 browsers** |
 
 ---
 
