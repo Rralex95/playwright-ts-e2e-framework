@@ -1,5 +1,4 @@
 import { PRACTICE_USERS, ROLES, INVALID_USER } from "./users"
-import { URLS } from "./urls"
 
 export const getLoginTestData = () => [
     {
@@ -7,7 +6,7 @@ export const getLoginTestData = () => [
         username: PRACTICE_USERS.user.username,
         password: PRACTICE_USERS.user.password,
         role: ROLES[0],
-        expectedURL: URLS.shopPage,
+        expectedURL: "/angularpractice/shop",
         shouldPass: true
     },
     {
@@ -15,7 +14,7 @@ export const getLoginTestData = () => [
         username: PRACTICE_USERS.user.username,
         password: PRACTICE_USERS.user.password,
         role: ROLES[1],
-        expectedURL: URLS.shopPage,
+        expectedURL: "/angularpractice/shop",
         shouldPass: true
     },
     {
@@ -23,7 +22,7 @@ export const getLoginTestData = () => [
         username: PRACTICE_USERS.user.username,
         password: PRACTICE_USERS.user.password,
         role: ROLES[2],
-        expectedURL: URLS.shopPage,
+        expectedURL: "/angularpractice/shop",
         shouldPass: true
     },
     {
@@ -31,7 +30,7 @@ export const getLoginTestData = () => [
         username: INVALID_USER.username,
         password: INVALID_USER.password,
         role: ROLES[0],
-        expectedURL: URLS.loginPage,
+        expectedURL: "/loginpagePractise/",
         shouldPass: false
     }
 ]

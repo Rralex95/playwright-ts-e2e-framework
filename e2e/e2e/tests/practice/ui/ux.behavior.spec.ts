@@ -1,13 +1,13 @@
 import { test, expect } from "@playwright/test"
-import { PracticeLoginPage } from "../../../pages/practice/PracticeLoginPage"
+import { LoginPage } from "../../../pages/practice/LoginPage"
 import { ROLES } from "../../../../../data/users"
 
 test.describe("UX Behavior", () => {
 
-    let loginPage: PracticeLoginPage
+    let loginPage: LoginPage
 
     test.beforeEach(async ({ page }) => {
-        loginPage = new PracticeLoginPage(page)
+        loginPage = new LoginPage(page)
         await loginPage.goto()
     })
 

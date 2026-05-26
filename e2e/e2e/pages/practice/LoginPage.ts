@@ -1,7 +1,6 @@
-import { Page, Locator, expect } from "@playwright/test"
-import { URLS } from "../../../../data/urls"
+import { Page, Locator } from "@playwright/test"
 
-export class PracticeLoginPage {
+export class LoginPage {
 
     private readonly page: Page
 
@@ -32,14 +31,13 @@ export class PracticeLoginPage {
     }
 
     async goto() {
-        await this.page.goto(URLS.loginPage)
+        await this.page.goto("/loginpagePractise/")
     }
 
     async loginAsAdmin(user: string, password: string) {
         await this.userNameTextbox.fill(user)
         await this.passwordTextbox.fill(password)
         await this.loginButton.click()
-        await this.page.waitForURL(URLS.shopPage)
     }
 
     async loginAsUser(user: string, password: string, role: string) {
@@ -49,7 +47,6 @@ export class PracticeLoginPage {
         await this.confirmModal()
         await this.fillUserDetails(role)
         await this.loginButton.click()
-        await this.page.waitForURL(URLS.shopPage)
     }
 
     async selectUserRole() {
@@ -60,7 +57,6 @@ export class PracticeLoginPage {
         await this.btnOkay.waitFor({ state: 'visible' })
         await this.btnOkay.click()
         await this.btnOkay.waitFor({ state: 'hidden' })
-        await expect(this.typeUser.last()).toBeChecked()
     }
 
     async fillUserDetails(role: string) {

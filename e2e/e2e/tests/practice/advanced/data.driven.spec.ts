@@ -1,14 +1,14 @@
 import { test, expect } from "@playwright/test"
-import { PracticeLoginPage } from "../../../pages/practice/PracticeLoginPage"
+import { LoginPage } from "../../../pages/practice/LoginPage"
 import { ERROR_MESSAGES } from "../../../../../data/messages"
 import { getLoginTestData } from "../../../../../data/testData"
 
 test.describe("Data Driven Login", () => {
 
-    let loginPage: PracticeLoginPage
+    let loginPage: LoginPage
 
     test.beforeEach(async ({ page }) => {
-        loginPage = new PracticeLoginPage(page)
+        loginPage = new LoginPage(page)
         await loginPage.goto()
     })
 

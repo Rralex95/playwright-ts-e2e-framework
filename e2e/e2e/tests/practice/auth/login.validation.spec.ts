@@ -1,15 +1,14 @@
 import { test, expect } from "@playwright/test"
-import { PracticeLoginPage } from "../../../pages/practice/PracticeLoginPage"
+import { LoginPage } from "../../../pages/practice/LoginPage"
 import { PRACTICE_USERS, INVALID_USER } from "../../../../../data/users"
 import { ERROR_MESSAGES } from "../../../../../data/messages"
-import { URLS } from "../../../../../data/urls"
 
 test.describe("Login Validations", () => {
 
-    let loginPage: PracticeLoginPage
+    let loginPage: LoginPage
 
     test.beforeEach(async ({ page }) => {
-        loginPage = new PracticeLoginPage(page)
+        loginPage = new LoginPage(page)
         await loginPage.goto()
     })
 
@@ -66,7 +65,7 @@ test.describe("Login Validations", () => {
         await loginPage.loginButton.click()
 
         await expect(loginPage.termsCheckbox).not.toBeChecked()
-        await expect(page).toHaveURL(URLS.loginPage)
+        await expect(page).toHaveURL("/loginpagePractise/")
     })
 
 })

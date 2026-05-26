@@ -15,8 +15,8 @@ export const PRACTICE_USERS = {
 
 export const CLIENT_USERS = {
     validUser: {
-        email: "test@test.com",
-        password: "Password123"
+        email: ENV.clientEmail,
+        password: ENV.clientPassword
     }
 }
 

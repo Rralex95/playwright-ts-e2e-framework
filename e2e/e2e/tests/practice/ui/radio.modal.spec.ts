@@ -1,12 +1,12 @@
 import { test, expect } from "@playwright/test"
-import { PracticeLoginPage } from "../../../pages/practice/PracticeLoginPage"
+import { LoginPage } from "../../../pages/practice/LoginPage"
 
 test.describe("Radio Button Modal", () => {
 
-    let loginPage: PracticeLoginPage
+    let loginPage: LoginPage
 
     test.beforeEach(async ({ page }) => {
-        loginPage = new PracticeLoginPage(page)
+        loginPage = new LoginPage(page)
         await loginPage.goto()
     })
 
