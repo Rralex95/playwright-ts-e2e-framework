@@ -51,15 +51,15 @@ playwright-ts-e2e-framework/
 
 ## Test Coverage
 
-| File | Tests | Description |
-|---|---|---|
-| `login.happy.spec.ts` | 3 | Admin and user login flows |
-| `login.validation.spec.ts` | 7 | Empty fields, invalid credentials, terms |
-| `radio.modal.spec.ts` | 3 | Modal display, cancel, and confirmation |
-| `dropdown.spec.ts` | 3 | Role selection (parametrized) |
-| `ux.behavior.spec.ts` | 2 | Password masking, dropdown options |
-| `data.driven.spec.ts` | 4 | Login flows with multiple datasets |
-| **Total** | **22** | **66 across 3 browsers** |
+| File                       | Tests  | Description                              |
+| -------------------------- | ------ | ---------------------------------------- |
+| `login.happy.spec.ts`      | 3      | Admin and user login flows               |
+| `login.validation.spec.ts` | 7      | Empty fields, invalid credentials, terms |
+| `radio.modal.spec.ts`      | 3      | Modal display, cancel, and confirmation  |
+| `dropdown.spec.ts`         | 3      | Role selection (parametrized)            |
+| `ux.behavior.spec.ts`      | 2      | Password masking, dropdown options       |
+| `data.driven.spec.ts`      | 4      | Login flows with multiple datasets       |
+| **Total**                  | **22** | **66 across 3 browsers**                 |
 
 ---
 
@@ -70,6 +70,8 @@ Tests run across three browsers via Playwright projects:
 - Chromium
 - Firefox
 - WebKit (Safari)
+
+> **Note:** Firefox may show a slow teardown process when running against rahulshettyacademy.com due to third-party scripts (Google Tag Manager, Facebook Pixel). All tests pass correctly — this is a known behavior of the test site, not the framework.
 
 ---
 

@@ -6,13 +6,15 @@ import { defineConfig, devices } from '@playwright/test';
  */
 import dotenv from 'dotenv';
 import path from 'path';
+import { PATHS } from './config/paths'
+
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './e2e/e2e/tests',
+  testDir: './e2e/e2e',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -42,19 +44,34 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      name: "setup",
+      testMatch: "**/e2e/e2e/setup/*.ts"
     },
-
+    {
+      name: 'chromium',
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: PATHS.authFile
+      },
+      dependencies: ['setup']
+    },
     {
       name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-      timeout: 60000,
+      use: {
+        ...devices['Desktop Firefox'],
+        storageState: PATHS.authFile
+      },
+      dependencies: ['setup'],
+      timeout: 60000
     },
-
     {
       name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
+      use: {
+        ...devices['Desktop Safari'],
+        storageState: PATHS.authFile
+      },
+      dependencies: ['setup'],
+      timeout: 60000
     },
 
     /* Test against mobile viewports. */
