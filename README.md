@@ -21,16 +21,28 @@ playwright-ts-e2e-framework/
 │   └── workflows/
 │       └── playwright.yml        # CI/CD pipeline
 ├── config/
-│   └── env.ts                    # Environment variable loader
+│   ├── env.ts                    # Environment variable loader
+│   └── paths.ts                  # Framework path constants
 ├── data/
-│   ├── messages.ts               # Error and validation messages
+│   ├── checkoutData.ts           # Checkout test data
+│   ├── messages.ts               # Error and success messages
+│   ├── products.ts               # Product constants
 │   ├── testData.ts               # Data-driven test datasets
 │   └── users.ts                  # User credentials and roles
 ├── e2e/
 │   └── e2e/
+│       ├── fixtures/
+│       │   └── index.ts                   # Playwright fixtures (Page Object injection)
+│       ├── helpers/
+│       │   └── auth.helper.ts             # Reusable login functions
 │       ├── pages/
 │       │   └── practice/
-│       │       └── LoginPage.ts           # Page Object Model
+│       │       ├── LoginPage.ts           # Login Page Object
+│       │       ├── ShopPage.ts            # Shop Page Object
+│       │       ├── CartPage.ts            # Cart Page Object
+│       │       └── CheckoutPage.ts        # Checkout Page Object
+│       ├── setup/
+│       │   └── auth.setup.ts             # Authentication setup (storageState)
 │       └── tests/
 │           └── practice/
 │               ├── auth/
@@ -40,8 +52,12 @@ playwright-ts-e2e-framework/
 │               │   ├── radio.modal.spec.ts        # Modal behavior tests
 │               │   ├── dropdown.spec.ts           # Dropdown tests
 │               │   └── ux.behavior.spec.ts        # UX behavior tests
-│               └── advanced/
-│                   └── data.driven.spec.ts        # Data-driven tests
+│               ├── advanced/
+│               │   └── data.driven.spec.ts        # Data-driven tests
+│               └── shop/
+│                   ├── shop.happy.spec.ts         # Shop happy path tests
+│                   ├── shop.cart.spec.ts          # Cart tests
+│                   └── shop.checkout.spec.ts      # Checkout tests
 ├── .env.example                  # Environment variable template
 ├── playwright.config.ts          # Playwright configuration
 └── package.json
@@ -59,7 +75,10 @@ playwright-ts-e2e-framework/
 | `dropdown.spec.ts`         | 3      | Role selection (parametrized)            |
 | `ux.behavior.spec.ts`      | 2      | Password masking, dropdown options       |
 | `data.driven.spec.ts`      | 4      | Login flows with multiple datasets       |
-| **Total**                  | **22** | **66 across 3 browsers**                 |
+| `shop.happy.spec.ts`       | 2      | Add to cart and complete purchase        |
+| `shop.cart.spec.ts`        | 2      | Cart display and product removal         |
+| `shop.checkout.spec.ts`    | 2      | Purchase with and without terms          |
+| **Total**                  | **28** | **85 across 3 browsers**                 |
 
 ---
 
@@ -103,6 +122,8 @@ cp .env.example .env
 BASE_URL=https://rahulshettyacademy.com
 ADMIN_USERNAME=your_username
 ADMIN_PASSWORD=your_password
+CLIENT_EMAIL=your_email
+CLIENT_PASSWORD=your_password
 ```
 
 ---
