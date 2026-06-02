@@ -1,36 +1,26 @@
-import { test, expect } from "@playwright/test"
-import { LoginPage } from "../../../pages/practice/LoginPage"
+import { expect } from "@playwright/test"
+import { test } from "../../../fixtures"
+import { loginAsAdmin, loginAsUser } from "../../../helpers/auth.helper"
 import { PRACTICE_USERS, ROLES } from "../../../../../data/users"
 
 test.describe("Login Happy Paths", () => {
 
-    let loginPage: LoginPage
-
-    test.beforeEach(async ({ page }) => {
-        loginPage = new LoginPage(page)
-
-        await loginPage.goto()
-    })
-
     test("admin can login successfully", async ({ page }) => {
-        const { username, password } = PRACTICE_USERS.admin
-
-        await loginPage.loginAsAdmin(username, password)
+        await loginAsAdmin(page)
 
         await expect(page).toHaveURL("/angularpractice/shop")
     })
 
     test("user can login successfully", async ({ page }) => {
-        const { username, password } = PRACTICE_USERS.user
-
-        await loginPage.loginAsUser(username, password, ROLES[0])
+        await loginAsUser(page)
 
         await expect(page).toHaveURL("/angularpractice/shop")
     })
 
-    test("user can accept modal confirmation", async ({ page }) => {
+    test("user can accept modal confirmation", async ({ page, loginPage }) => {
         const { username, password } = PRACTICE_USERS.user
 
+        await loginPage.goto()
         await loginPage.userNameTextbox.fill(username)
         await loginPage.passwordTextbox.fill(password)
         await loginPage.selectUserRole()
@@ -43,6 +33,5 @@ test.describe("Login Happy Paths", () => {
 
         await expect(page).toHaveURL("/angularpractice/shop")
     })
-
 
 })

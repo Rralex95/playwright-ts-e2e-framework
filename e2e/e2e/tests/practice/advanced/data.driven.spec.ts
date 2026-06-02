@@ -1,19 +1,16 @@
-import { test, expect } from "@playwright/test"
-import { LoginPage } from "../../../pages/practice/LoginPage"
+import { expect } from "@playwright/test"
+import { test } from "../../../fixtures"
 import { ERROR_MESSAGES } from "../../../../../data/messages"
 import { getLoginTestData } from "../../../../../data/testData"
 
 test.describe("Data Driven Login", () => {
 
-    let loginPage: LoginPage
-
-    test.beforeEach(async ({ page }) => {
-        loginPage = new LoginPage(page)
+    test.beforeEach(async ({ loginPage }) => {
         await loginPage.goto()
     })
 
     for (const data of getLoginTestData()) {
-        test(`should login with ${data.description}`, async ({ page }) => {
+        test(`should login with ${data.description}`, async ({ page, loginPage }) => {
             if (data.shouldPass) {
                 await loginPage.loginAsUser(data.username, data.password, data.role)
 

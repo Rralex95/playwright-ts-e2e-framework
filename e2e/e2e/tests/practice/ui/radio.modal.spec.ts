@@ -1,29 +1,26 @@
-import { test, expect } from "@playwright/test"
-import { LoginPage } from "../../../pages/practice/LoginPage"
+import { expect } from "@playwright/test"
+import { test } from "../../../fixtures"
 
 test.describe("Radio Button Modal", () => {
 
-    let loginPage: LoginPage
-
-    test.beforeEach(async ({ page }) => {
-        loginPage = new LoginPage(page)
+    test.beforeEach(async ({ loginPage }) => {
         await loginPage.goto()
     })
 
-    test("should display modal when selecting user role", async () => {
+    test("should display modal when selecting user role", async ({ loginPage }) => {
         await loginPage.selectUserRole()
 
         await expect(loginPage.btnOkay).toBeVisible()
     })
 
-    test("should cancel user role selection", async () => {
+    test("should cancel user role selection", async ({ loginPage }) => {
         await loginPage.selectUserRole()
         await loginPage.cancelModal()
 
         await expect(loginPage.typeUser.first()).toBeChecked()
     })
 
-    test("should keep user role selected after confirmation", async () => {
+    test("should keep user role selected after confirmation", async ({ loginPage }) => {
         await loginPage.selectUserRole()
         await loginPage.confirmModal()
 

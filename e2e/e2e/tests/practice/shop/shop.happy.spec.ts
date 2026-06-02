@@ -1,25 +1,16 @@
-import { test, expect } from "@playwright/test"
-import { ShopPage } from "../../../pages/practice/ShopPage"
-import { CartPage } from "../../../pages/practice/CartPage"
-import { CheckoutPage } from "../../../pages/practice/CheckoutPage"
+import { expect } from "@playwright/test"
+import { test } from "../../../fixtures"
 import { PRODUCTS } from "../../../../../data/products"
 import { CHECKOUT_DATA } from "../../../../../data/checkoutData"
 import { SUCCESS_MESSAGES } from "../../../../../data/messages"
 
 test.describe("Shop Happy Paths", () => {
 
-    let shopPage: ShopPage
-    let cartPage: CartPage
-    let checkoutPage: CheckoutPage
-
     test.beforeEach(async ({ page }) => {
-        shopPage = new ShopPage(page)
-        cartPage = new CartPage(page)
-        checkoutPage = new CheckoutPage(page)
         await page.goto("/angularpractice/shop")
     })
 
-    test("should add product to cart and complete purchase", async ({ page }) => {
+    test("should add product to cart and complete purchase", async ({ shopPage, cartPage, checkoutPage }) => {
         await shopPage.addProductToCart(PRODUCTS.iphoneX)
         await shopPage.goToCheckout()
         await cartPage.goToCheckout()
@@ -31,7 +22,7 @@ test.describe("Shop Happy Paths", () => {
         expect(message).toContain(SUCCESS_MESSAGES.orderPlaced)
     })
 
-    test("should update checkout counter when product is added", async () => {
+    test("should update checkout counter when product is added", async ({ shopPage }) => {
         await shopPage.addProductToCart(PRODUCTS.iphoneX)
 
         const count = await shopPage.getCheckoutCount()

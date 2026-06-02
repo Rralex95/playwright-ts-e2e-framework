@@ -33,7 +33,7 @@ export class CheckoutPage {
     }
 
     async acceptTerms() {
-        await this.termsLabel.click({ force: true })
+        await this.termsCheckbox.evaluate((el: HTMLInputElement) => el.click())
     }
 
     async purchase() {

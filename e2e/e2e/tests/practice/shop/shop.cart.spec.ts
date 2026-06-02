@@ -1,20 +1,14 @@
-import { test, expect } from "@playwright/test"
-import { ShopPage } from "../../../pages/practice/ShopPage"
-import { CartPage } from "../../../pages/practice/CartPage"
+import { expect } from "@playwright/test"
+import { test } from "../../../fixtures"
 import { PRODUCTS } from "../../../../../data/products"
 
 test.describe("Shop Cart", () => {
 
-    let shopPage: ShopPage
-    let cartPage: CartPage
-
     test.beforeEach(async ({ page }) => {
-        shopPage = new ShopPage(page)
-        cartPage = new CartPage(page)
         await page.goto("/angularpractice/shop")
     })
 
-    test("should display product in cart after adding", async () => {
+    test("should display product in cart after adding", async ({ shopPage, cartPage }) => {
         await shopPage.addProductToCart(PRODUCTS.iphoneX)
         await shopPage.goToCheckout()
 
@@ -22,7 +16,7 @@ test.describe("Shop Cart", () => {
         expect(isInCart).toBeTruthy()
     })
 
-    test("should remove product from cart", async () => {
+    test("should remove product from cart", async ({ shopPage, cartPage }) => {
         await shopPage.addProductToCart(PRODUCTS.iphoneX)
         await shopPage.goToCheckout()
         await cartPage.removeProduct(PRODUCTS.iphoneX)
